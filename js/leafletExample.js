@@ -25,6 +25,9 @@ var circMarker2Options = {
     interactive:true
 };
 
+var clickOn = "#3e79d2";
+var clickOff = "#eeede9";
+
 
 
 var zoomLevel = 11;
@@ -138,7 +141,19 @@ function readTextFile(file) {
 function clickEvent(e){
 
     var markerID = e.sourceTarget._path.id;
-    console.log("you clicked " + markerID);
+
+    var dot = document.getElementById(markerID);
+
+    var dotColor = dot.attributes.fill.value;
+    //var dot = d3.select('#'+markerID);
+    console.log("Dot color: " + dotColor);
+
+    if(dotColor == clickOn){
+        dot.style.fill = clickOff;
+    } else {
+        dot.style.fill = clickOn
+    }
+   // dot.style.fill='black';s
 }
 
 function mouseOverEvent(e){
